@@ -1,5 +1,5 @@
 .weather {
-  background-color: beige;
+  background-color: #ebe9de;
   border-radius: 2px;
   width: 600px;
   height: 500px;
@@ -8,4 +8,15 @@
 }
 .weather-icon {
   height: 50px;
+  margin-top: 20px;
+}
+.city {
+  margin-top: 1px;
+  margin-bottom: 10px;
+  font-weight: 200;
+}
+.temperature {
+  font-size: 36px;
+  margin-top: 5px;
+  font-weight: 500;
 }
