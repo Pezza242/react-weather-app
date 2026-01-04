@@ -1,10 +1,13 @@
 import "./App.css";
+import Weather from "./weather";
 
 function App() {
   return (
     <div className="App">
-      <h1>React Weather App</h1>
-      <button btn-primary>Click Me</button>
+      <div className="container">
+        {" "}
+        <Weather />
+      </div>
     </div>
   );
 }
