@@ -1,10 +1,40 @@
 .weather {
-  background-color: #ebe9de;
+  background-color: rgb(239, 237, 227, 0.3);
+  border-top: 40px solid #738eaa;
   border-radius: 2px;
+  color: white;
   width: 600px;
   height: 500px;
   margin: 0px auto;
   margin-top: 25px;
+}
+.search-form {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  align-items: baseline;
+}
+.search-bar {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 9px 5px;
+  margin-right: 10px;
+  width: 200px;
+}
+.submit {
+  background-color: #738eaa;
+  border: 1px solid #738eaa;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 15px;
+}
+.submit:hover {
+  background-color: #425c86;
+  border: 1px solid #425c86;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 .weather-icon {
   height: 50px;
