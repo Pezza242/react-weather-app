@@ -4,6 +4,9 @@ import "./weather.css";
 export default function Weather() {
   return (
     <div className="weather">
+      <header className="weather-header">
+        <p className="date">Thursday 1st January 2026</p>
+      </header>
       <form className="search-form">
         <input
           className="search-bar"
@@ -22,6 +25,7 @@ export default function Weather() {
       />
       <h1 className="city">London</h1>
       <h2 className="temperature">0º</h2>
+      <p className="icon-description">Sunny</p>
     </div>
   );
 }
