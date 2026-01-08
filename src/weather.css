@@ -39,13 +39,23 @@
   background-color: #425c86;
   border: 1px solid #425c86;
 }
+.time {
+  border-radius: 5px;
+  margin: 0px auto;
+  margin-top: 10px;
+  background-color: rgb(115, 142, 170, 0.4);
+  padding: 5px 10px;
+  width: 75px;
+  text-align: center;
+}
 hr {
   margin-top: 20px;
   margin-bottom: 0px;
+  border: 0.1px solid white;
 }
 .weather-icon {
   height: 50px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .city {
   margin-top: 1px;

@@ -17,6 +17,7 @@ export default function Weather() {
         <input className="submit" type="submit" />
       </form>
       <hr />
+      <p className="time">12:00PM</p>
       <img
         className="weather-icon"
         src="https://i.ibb.co/qY9z3CRM/sun.png"
