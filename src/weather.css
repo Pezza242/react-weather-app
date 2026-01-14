@@ -74,6 +74,7 @@
   margin-top: 10px;
   margin-right: 5px;
   font-weight: 400;
+  text-transform: capitalize;
 }
 #line-2 {
   margin: 40px 40px;
