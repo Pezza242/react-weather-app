@@ -15,7 +15,7 @@
   margin: 0px auto;
   margin-top: 25px;
 }
-.search-form {
+#search-form {
   margin: 15px 0px;
   margin-left: 20px;
   display: flex;
@@ -48,7 +48,7 @@
   width: 75px;
   text-align: center;
 }
-hr {
+#line-1 {
   margin-top: 20px;
   margin-bottom: 0px;
   border: 0.1px solid white;
@@ -64,14 +64,34 @@ hr {
   font-size: 36px;
 }
 .temperature {
-  font-size: 48px;
+  font-size: 56px;
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: 500;
 }
-.icon-description {
-  font-size: 18px;
+#icon-description {
+  font-size: 16px;
   margin-top: 10px;
   margin-right: 5px;
   font-weight: 400;
+}
+#line-2 {
+  margin: 40px 40px;
+  margin-bottom: 0px;
+  border: 0.1px solid white;
+}
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 17px;
+  text-align: center;
+  padding-left: 0px;
+  margin: 20px 0px;
+}
+.humidity {
+  margin-bottom: 2px;
+}
+strong {
+  color: rgb(66, 92, 134, 0.7);
 }
