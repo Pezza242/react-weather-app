@@ -5,6 +5,7 @@ import moment from "moment";
 import Clock from "./clock";
 import SearchForm from "./searchForm";
 import WeatherInfo from "./weatherInfo";
+import Loader from "./loader";
 
 export default function Weather() {
   const [weatherInfo, setWeatherInfo] = useState({ loading: false });
@@ -34,7 +35,8 @@ export default function Weather() {
     searchCity();
   }
   if (!weatherInfo.loading) {
-    return "Loading";
+    searchCity();
+    return <Loader />;
   }
   return (
     <div className="weather">
