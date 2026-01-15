@@ -2,23 +2,34 @@ import React, { useState } from "react";
 import "./weather.css";
 import axios from "axios";
 import moment from "moment";
+import Clock from "./clock";
 
 export default function Weather() {
   const [weatherInfo, setWeatherInfo] = useState({ loading: false });
+  const [city, setCity] = useState("London");
   let date = moment().format("dddd Do MMMM YYYY");
-  let time = moment().format("LT");
 
   function handleResponse(response) {
     let d = response.data;
     setWeatherInfo({
       loading: true,
-      date: new Date(d.dt * 1000),
-      city: "London",
+      city: d.name,
       temperature: d.main.temp,
       humidity: d.main.humidity,
       wind: d.wind.speed,
       description: d.weather[0].description,
     });
+  }
+  function searchCity() {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=50fa4024e3b1d5eac2f51ab18a47e997&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    searchCity();
   }
   if (weatherInfo.loading) {
     return (
@@ -26,17 +37,18 @@ export default function Weather() {
         <header className="weather-header">
           <p className="date">{date}</p>
         </header>
-        <form id="search-form">
+        <form id="search-form" onSubmit={handleSubmit}>
           <input
             className="search-bar"
             type="search"
             placeholder="Enter a city..."
+            onChange={updateCity}
             required
           />
           <input className="submit" type="submit" value="Search" />
         </form>
         <hr id="line-1" />
-        <p className="time">{time}</p>
+        <Clock />
         <img
           className="weather-icon"
           src="https://i.ibb.co/qY9z3CRM/sun.png"
@@ -58,8 +70,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=50fa4024e3b1d5eac2f51ab18a47e997&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    searchCity();
     return "Loading.....";
   }
 }
