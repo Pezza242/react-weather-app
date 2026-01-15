@@ -3,6 +3,8 @@ import "./weather.css";
 import axios from "axios";
 import moment from "moment";
 import Clock from "./clock";
+import SearchForm from "./searchForm";
+import WeatherInfo from "./weatherInfo";
 
 export default function Weather() {
   const [weatherInfo, setWeatherInfo] = useState({ loading: false });
@@ -31,46 +33,18 @@ export default function Weather() {
     event.preventDefault();
     searchCity();
   }
-  if (weatherInfo.loading) {
-    return (
-      <div className="weather">
-        <header className="weather-header">
-          <p className="date">{date}</p>
-        </header>
-        <form id="search-form" onSubmit={handleSubmit}>
-          <input
-            className="search-bar"
-            type="search"
-            placeholder="Enter a city..."
-            onChange={updateCity}
-            required
-          />
-          <input className="submit" type="submit" value="Search" />
-        </form>
-        <hr id="line-1" />
-        <Clock />
-        <img
-          className="weather-icon"
-          src="https://i.ibb.co/qY9z3CRM/sun.png"
-          alt={weatherInfo.description}
-          border="0"
-        />
-        <h1 className="city">{weatherInfo.city}</h1>
-        <h2 className="temperature">{Math.round(weatherInfo.temperature)}º</h2>
-        <p id="icon-description">{weatherInfo.description}</p>
-        <hr id="line-2" />
-        <ul className="weather-info">
-          <li className="humidity">
-            Humidity: <strong>{weatherInfo.humidity}%</strong>
-          </li>
-          <li className="wind">
-            Wind: <strong>{Math.round(weatherInfo.wind)}km/h</strong>
-          </li>
-        </ul>
-      </div>
-    );
-  } else {
-    searchCity();
-    return "Loading.....";
+  if (!weatherInfo.loading) {
+    return "Loading";
   }
+  return (
+    <div className="weather">
+      <header className="weather-header">
+        <p className="date">{date}</p>
+      </header>
+      <SearchForm onSubmit={handleSubmit} onChange={updateCity} />
+      <hr id="line-1" />
+      <Clock />
+      <WeatherInfo data={weatherInfo} />
+    </div>
+  );
 }
