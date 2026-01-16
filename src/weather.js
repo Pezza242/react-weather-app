@@ -20,6 +20,7 @@ export default function Weather() {
       temperature: d.main.temp,
       humidity: d.main.humidity,
       wind: d.wind.speed,
+      icon: d.weather[0].icon,
       description: d.weather[0].description,
     });
   }
