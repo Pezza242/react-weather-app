@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./weather.css";
 import axios from "axios";
 import moment from "moment";
@@ -6,11 +6,14 @@ import Clock from "./clock";
 import SearchForm from "./searchForm";
 import WeatherInfo from "./weatherInfo";
 import Loader from "./loader";
+import { weatherTheme } from "./weatherTheme";
+import WeatherIcon from "./weatherIcon";
 
 export default function Weather() {
   const [weatherInfo, setWeatherInfo] = useState({ loading: false });
   const [city, setCity] = useState("London");
   let date = moment().format("dddd Do MMMM YYYY");
+  const theme = weatherTheme[weatherInfo.icon] || {};
 
   function handleResponse(response) {
     let d = response.data;
@@ -35,10 +38,17 @@ export default function Weather() {
     event.preventDefault();
     searchCity();
   }
+  useEffect(() => {
+    if (theme.background) {
+      document.body.style.backgroundImage = `url(${theme.background})`;
+    }
+  }, [theme.background]);
+
   if (!weatherInfo.loading) {
     searchCity();
     return <Loader />;
   }
+
   return (
     <div className="weather">
       <header className="weather-header">
@@ -47,6 +57,7 @@ export default function Weather() {
       <SearchForm onSubmit={handleSubmit} onChange={updateCity} />
       <hr id="line-1" />
       <Clock />
+      <WeatherIcon data={weatherInfo.icon} />
       <WeatherInfo data={weatherInfo} />
     </div>
   );
