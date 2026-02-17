@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SearchForm({ onSubmit, onChange }) {
+export default function SearchForm({ onSubmit, onChange, theme }) {
   return (
     <form id="search-form" onSubmit={onSubmit}>
       <input
@@ -10,7 +10,12 @@ export default function SearchForm({ onSubmit, onChange }) {
         onChange={onChange}
         required
       />
-      <input className="submit" type="submit" value="Search" />
+      <input
+        className="submit"
+        type="submit"
+        value="Search"
+        style={{ backgroundColor: theme.colour, border: theme.colour }}
+      />
     </form>
   );
 }

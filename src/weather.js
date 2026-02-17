@@ -10,14 +10,14 @@ import { weatherTheme } from "./weatherTheme";
 import WeatherIcon from "./weatherIcon";
 
 export default function Weather() {
-  const [weatherInfo, setWeatherInfo] = useState({ loading: false });
+  const [weatherData, setWeatherData] = useState({ loading: false });
   const [city, setCity] = useState("London");
   let date = moment().format("dddd Do MMMM YYYY");
-  const theme = weatherTheme[weatherInfo.icon] || {};
+  const theme = weatherTheme[weatherData.icon] || {};
 
   function handleResponse(response) {
     let d = response.data;
-    setWeatherInfo({
+    setWeatherData({
       loading: true,
       city: d.name,
       temperature: d.main.temp,
@@ -41,24 +41,28 @@ export default function Weather() {
   useEffect(() => {
     if (theme.background) {
       document.body.style.backgroundImage = `url(${theme.background})`;
+      document.body.style.transition = "background-image 0.5s ease-in-out";
     }
   }, [theme.background]);
 
-  if (!weatherInfo.loading) {
+  if (!weatherData.loading) {
     searchCity();
     return <Loader />;
   }
 
   return (
     <div className="weather">
-      <header className="weather-header">
+      <header
+        className="weather-header"
+        style={{ backgroundColor: theme.colour }}
+      >
         <p className="date">{date}</p>
       </header>
-      <SearchForm onSubmit={handleSubmit} onChange={updateCity} />
+      <SearchForm onSubmit={handleSubmit} onChange={updateCity} theme={theme} />
       <hr id="line-1" />
-      <Clock />
-      <WeatherIcon data={weatherInfo.icon} />
-      <WeatherInfo data={weatherInfo} />
+      <Clock theme={theme} />
+      <WeatherIcon data={weatherData.icon} />
+      <WeatherInfo data={weatherData} theme={theme} />
     </div>
   );
 }

@@ -9,10 +9,16 @@ export default function WeatherInfo(props) {
       <hr id="line-2" />
       <ul className="extra-info">
         <li className="humidity">
-          Humidity: <strong>{props.data.humidity}%</strong>
+          Humidity:{" "}
+          <strong style={{ color: props.theme.colour }}>
+            {props.data.humidity}%
+          </strong>
         </li>
         <li className="wind">
-          Wind: <strong>{Math.round(props.data.wind)}km/h</strong>
+          Wind:{" "}
+          <strong style={{ color: props.theme.colour }}>
+            {Math.round(props.data.wind)}km/h
+          </strong>
         </li>
       </ul>
     </div>
