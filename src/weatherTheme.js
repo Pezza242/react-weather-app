@@ -1,5 +1,3 @@
-import React from "react";
-
 export const weatherTheme = {
   "01d": {
     icon: "https://i.ibb.co/xKzG7FKd/sunny-icon.png",
